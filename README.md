@@ -2,7 +2,7 @@
 
 A simple HTML5 file drag and drop plugin. A drag and drop area can be initialized with the following invocation:
 
-$("selector").dragAndDrop("name");
+	$("selector").dragAndDrop("name");
 
 Where name is the name that you would like to use for the created file input field and selector applies to some element inside a form. A drag and drop area will hold a single file, and any additional dropped files will simply over write the previously dropped file. 
 

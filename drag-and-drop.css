@@ -1,17 +1,23 @@
 /*
 Styles for HTML5 File Drag & Drop demonstration
+Featured on SitePoint.com
 Developed by Craig Buckler (@craigbuckler) of OptimalWorks.net
-Extended by Clinton Pahl
 */
-body {
-	font-family: "Segoe UI", Tahoma, Helvetica, freesans, sans-serif;
-}
-
 .drag-and-drop {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-o-box-sizing: border-box;
 	box-sizing: border-box;
+}
+
+.drag-and-drop input {
+    position: absolute;
+    top:0;
+    left:0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
 }
 
 .drag-and-drop * {
@@ -23,14 +29,13 @@ body {
 
 .filedrag {
 	display: table;
-	font-weight: bold;
 	text-align: center;
 	margin: 1em 0;
-	color: #555;
-	border: 2px dashed #555;
+	border: 2px dashed #BBBBBB;
 	cursor: default;
 	width: 100%;
 	height: 8em;
+    position: relative;
 
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
@@ -38,9 +43,22 @@ body {
 	border-radius: 3px;
 }
 
-.filedrag span {
+.info {
+	font-weight: bold;
+	color: #BBBBBB;
+}
+
+.info-file {
+	font-weight: bold;
+	color: #6F916F;
+}
+
+.filedrag .status {
 	display: table-cell;
 	vertical-align: middle;
+	background-color: #F7F7F7;
+    width: 100%;
+    height: 100%;
 }
 
 .filedrag.hover {
@@ -65,8 +83,12 @@ pre {
 	overflow: auto;
 }
 
+.messages p {
+	margin: 0;
+}
+
 .drag-and-drop .messages {
-	padding: 0 10px;
+	padding: 0.5em;
 	margin: 1em 0;
 	border: 2px solid #129F22;
 	width: 100%;

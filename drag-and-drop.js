@@ -1,75 +1,63 @@
 /*
+filedrag.js - HTML5 File Drag & Drop demonstration
+Featured on SitePoint.com
 Developed by Craig Buckler (@craigbuckler) of OptimalWorks.net
 Extended by Clinton Pahl
 */
 
-(function(dragAndDrop) {
-
-  dragAndDrop(window.jQuery, window, document);
-
-  }(function($, window, document) {
+//DOM ready
+$(function() {
     var html = '<div class="filedrag"> \
-                  <div class="hidden"> \
-                    <label for="fileselect">File to upload:</label> \
-                    <input type="file" class="fileselect"/> \
-                  </div> \
-                  <span>Drop file here</span> \
+                  <span id="fileInput"></span> \
+                  <span class="status info">Drop file here</span> \
                 </div> \
                 <div class="messages hidden"></div>';
 
-    $(function() {
 
-      $.fn.dragAndDrop = function(inputName) {
-        var self = this;
-        var form = this.closest('form');
+    $.fn.dragAndDrop = function() {
+        // publicly accesible dropped file
+        var dragAndDrop = this;
+        var self = $(this);
+        var input = $(this).find('input');
 
-        this.html(html);
-        this.addClass('drag-and-drop');
-        this.name = inputName;
+        input.wrap(html);
 
-        this.find('.filedrag').on('dragenter dragover', function(e) {
-          $(this).addClass("hover");
+        $(this).addClass('drag-and-drop');
 
-          return false;
+        $(this).find('.filedrag').on('dragenter dragover', function (e) {
+            $(this).addClass("hover");
         });
 
-        this.find('.filedrag').on('dragleave', function(e) {
-          $(this).removeClass("hover");
-
-          return false;
+        $(this).find('.filedrag').on('dragleave', function (e) {
+            $(this).removeClass("hover");
         });
 
-        this.find('.filedrag').on('drop', function(e) {
-          var fileselect = self.find('.fileselect');
-          var files;
+        $(this).find('.filedrag').on('drop', function (e) {
+            var fileselect = self.find('.fileselect');
+            var files;
 
-          $(this).removeClass("hover");
+            $(this).removeClass("hover");
 
-          files = e.originalEvent.dataTransfer.files;
-          parseFile(files[0]);
-
-          form.data(self.name, files[0]);
-
-          return false;
+            files = e.originalEvent.dataTransfer.files;
+            dragAndDrop.dropFile = files[0];
+            parseFile(dragAndDrop.dropFile);
         });
 
         // output file information
         function parseFile(file) {
-          output(
-            "<p>File information: <strong>" + file.name +
-            "</strong> type: <strong>" + file.type +
-            "</strong> size: <strong>" + file.size +
-            "</strong> bytes</p>"
-          );
+            output(
+                "<p>File: <strong>" + file.name +
+                "</strong> Type: <strong>" + file.type +
+                "</strong> Size: <strong>" + file.size +
+                "</strong> bytes</p>"
+            );
         }
 
         // output information
         function output(msg) {
-          self.find('.messages').show().html(msg);
+            self.find('.status').removeClass("info").addClass("info-file").html(msg);
         }
 
         return this;
-      };
-    });
-  }
-));
+    }
+});

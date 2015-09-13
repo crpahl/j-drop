@@ -1,17 +1,15 @@
 # j-drop
 
-A simple HTML5 file drag and drop plugin. First, wrap your file input in a container. For example
+A simple HTML5 file drag and drop plugin. Creates a drag and drop area around a file input:
 
-     <div id="file-drop">
-         <input type="file" name="imageUpload" />
-     </div>
+    <input id="file-drop" type="file" name="imageUpload" />
 
 A drag and drop area can be initialized with the following invocation:
 
-    $("file-drop").dragAndDrop();
+    $("#file-drop").dragAndDrop();
 
 If you need to access the file you can do it through the public accessor:
 
-    var dragAndDrop = $("file-drop").dragAndDrop();
+    var dragAndDrop = $("#file-drop").dragAndDrop();
     ...
     dragAndDrop.dropFile;

@@ -7,33 +7,29 @@ Extended by Clinton Pahl
 
 //DOM ready
 $(function() {
+
     var html = '<div class="filedrag"> \
-                  <span id="fileInput"></span> \
-                  <span class="status info">Drop file here</span> \
-                </div> \
-                <div class="messages hidden"></div>';
+                    <span class="status info">Drop file here</span> \
+                </div> ';
 
 
     $.fn.dragAndDrop = function() {
-        // publicly accesible dropped file
         var dragAndDrop = this;
-        var self = $(this);
-        var input = $(this).find('input');
+        var input = $(this);
 
         input.wrap(html);
 
-        $(this).addClass('drag-and-drop');
+        var container = $(this).parent();
 
-        $(this).find('.filedrag').on('dragenter dragover', function (e) {
+        $(container).on('dragenter dragover', function (e) {
             $(this).addClass("hover");
         });
 
-        $(this).find('.filedrag').on('dragleave', function (e) {
+        $(container).on('dragleave', function (e) {
             $(this).removeClass("hover");
         });
 
-        $(this).find('.filedrag').on('drop', function (e) {
-            var fileselect = self.find('.fileselect');
+        $(container).on('drop', function (e) {
             var files;
 
             $(this).removeClass("hover");
@@ -55,7 +51,7 @@ $(function() {
 
         // output information
         function output(msg) {
-            self.find('.status').removeClass("info").addClass("info-file").html(msg);
+            container.find('.status').removeClass("info").addClass("info-file").html(msg);
         }
 
         return this;

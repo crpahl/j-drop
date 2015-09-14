@@ -9,6 +9,7 @@ Extended by Clinton Pahl
 $(document).ready(function() {
 
     var html = '<div class="filedrag"> \
+                    <span><span></span></span> \
                     <span class="status info">Drop File or Click Here</span> \
                 </div> ';
 
@@ -18,7 +19,7 @@ $(document).ready(function() {
 
         input.wrap(html);
 
-        var container = $(this).parent();
+        var container = $(this).closest('.filedrag');
 
         $(input).on('change', function(e) {
             files = this.files;

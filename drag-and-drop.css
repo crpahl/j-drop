@@ -2,34 +2,12 @@
 Styles for HTML5 File Drag & Drop demonstration
 Featured on SitePoint.com
 Developed by Craig Buckler (@craigbuckler) of OptimalWorks.net
-*/
-/*
-.drag-and-drop {
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	-o-box-sizing: border-box;
-	box-sizing: border-box;
-}
 
-.drag-and-drop input {
-    position: absolute;
-    top:0;
-    left:0;
-    opacity: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 9999;
-}
-
-.drag-and-drop * {
-	-webkit-box-sizing: inherit;
-	-moz-box-sizing: inherit;
-	-o-box-sizing: inherit;
-	box-sizing: inherit;
-}
+Extended by Clinton Pahl
 */
 
 .filedrag {
+    background-color: #F7F7F7;
 	display: table;
 	text-align: center;
 	margin: 1em 0;
@@ -50,6 +28,18 @@ Developed by Craig Buckler (@craigbuckler) of OptimalWorks.net
 	border-radius: 3px;
 }
 
+.filedrag:hover {
+    border: 2px solid #BBBBBB;
+    background: rgba(224,224,224,1);
+    background: -moz-linear-gradient(top, rgba(224,224,224,1) 0%, rgba(246,246,246,1) 53%, rgba(255,255,255,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(224,224,224,1)), color-stop(53%, rgba(246,246,246,1)), color-stop(100%, rgba(255,255,255,1)));
+    background: -webkit-linear-gradient(top, rgba(224,224,224,1) 0%, rgba(246,246,246,1) 53%, rgba(255,255,255,1) 100%);
+    background: -o-linear-gradient(top, rgba(224,224,224,1) 0%, rgba(246,246,246,1) 53%, rgba(255,255,255,1) 100%);
+    background: -ms-linear-gradient(top, rgba(224,224,224,1) 0%, rgba(246,246,246,1) 53%, rgba(255,255,255,1) 100%);
+    background: linear-gradient(to bottom, rgba(224,224,224,1) 0%, rgba(246,246,246,1) 53%, rgba(255,255,255,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e0e0e0', endColorstr='#ffffff', GradientType=0 );
+}
+
 .filedrag input {
     position: absolute;
     top:0;
@@ -58,6 +48,10 @@ Developed by Craig Buckler (@craigbuckler) of OptimalWorks.net
     width: 100%;
     height: 100%;
     z-index: 9999;
+}
+
+.filedrag input:hover {
+    cursor: pointer;
 }
 
 .filedrag * {
@@ -80,7 +74,6 @@ Developed by Craig Buckler (@craigbuckler) of OptimalWorks.net
 .filedrag .status {
 	display: table-cell;
 	vertical-align: middle;
-	background-color: #F7F7F7;
     width: 100%;
     height: 100%;
 }
@@ -110,20 +103,6 @@ pre {
 .messages p {
 	margin: 0;
 }
-
-/*
-.drag-and-drop .messages {
-	padding: 0.5em;
-	margin: 1em 0;
-	border: 2px solid #129F22;
-	width: 100%;
-
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-    -o-border-radius: 3px;
-	border-radius: 3px;
-}
-*/
 
 .filedrag .messages {
 	padding: 0.5em;

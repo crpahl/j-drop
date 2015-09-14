@@ -2,16 +2,15 @@
 filedrag.js - HTML5 File Drag & Drop demonstration
 Featured on SitePoint.com
 Developed by Craig Buckler (@craigbuckler) of OptimalWorks.net
+
 Extended by Clinton Pahl
 */
 
-//DOM ready
-$(function() {
+$(document).ready(function() {
 
     var html = '<div class="filedrag"> \
-                    <span class="status info">Drop file here</span> \
+                    <span class="status info">Drop File or Click Here</span> \
                 </div> ';
-
 
     $.fn.dragAndDrop = function() {
         var dragAndDrop = this;
@@ -20,6 +19,12 @@ $(function() {
         input.wrap(html);
 
         var container = $(this).parent();
+
+        $(input).on('change', function(e) {
+            files = this.files;
+            dragAndDrop.dropFile = files[0];
+            parseFile(dragAndDrop.dropFile);
+        });
 
         $(container).on('dragenter dragover', function (e) {
             $(this).addClass("hover");
@@ -30,13 +35,7 @@ $(function() {
         });
 
         $(container).on('drop', function (e) {
-            var files;
-
             $(this).removeClass("hover");
-
-            files = e.originalEvent.dataTransfer.files;
-            dragAndDrop.dropFile = files[0];
-            parseFile(dragAndDrop.dropFile);
         });
 
         // output file information
